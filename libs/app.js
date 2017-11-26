@@ -37,7 +37,7 @@ class DropdownMenu {
                     for (let article of articles) {
                         $("#articles").append(`<li class="list-group-item">${article.description}</li>`);
                     }
-                }, null).executeFetch();
+                }, (error) => $('#alert').show()).executeFetch();
             }
         );
     }
@@ -49,4 +49,4 @@ new Fetcher(CHANNELS_URL, (json) => {
         new DropdownMenuItem(channel.name, channel.id);
     }
     new DropdownMenu().addOnClickHandler();
-}, null).executeFetch();
+}, (error) => $('#alert').show()).executeFetch();
