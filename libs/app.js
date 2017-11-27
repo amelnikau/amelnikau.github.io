@@ -33,9 +33,22 @@ class DropdownMenu {
                 $("#dropdownMenuButton").html(`${channelName} <span class="caret"></span>`);
                 new Fetcher(NEWS_URL_WITHOUT_SOURCE + channelId, (json) => {
                     let {articles = []} = json;
-                    $("#articles").empty();
+                    $(".featurette").remove();
+                    $(".featurette-divider").remove();
                     for (let article of articles) {
-                        $("#articles").append(`<li class="list-group-item">${article.description}</li>`);
+                        $("#dropdownSection")
+                            .after(`    <hr class="featurette-divider">
+
+                                        <div class="row featurette">
+                                            <div class="col-md-7">
+                                                <h2 class="featurette-heading">${article.title}</h2>
+                                                <p class="lead">${article.description}</p>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <img class="featurette-image img-fluid mx-auto" src="${article.urlToImage}"
+                                                     alt="News image">
+                                            </div>
+                                        </div>`);
                     }
                 }, (error) => $('#alert').show()).executeFetch();
             }
