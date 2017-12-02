@@ -7,6 +7,7 @@ class Fetcher {
         this.url = url;
         this.fulfillClosure = fulfillClosure;
         this.rejectClosure = rejectClosure;
+        console.log(this);
     }
 
     executeFetch() {
@@ -58,6 +59,7 @@ class DropdownMenu {
 
 new Fetcher(CHANNELS_URL, (json) => {
     let {sources = []} = json;
+    console.log(sources);
     for (let channel of sources) {
         new DropdownMenuItem(channel.name, channel.id);
     }

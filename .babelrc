@@ -1,14 +1,16 @@
 {
+  "plugins": ["./plugins/remove-console-log-plugin.js"],
   "presets": [
     [
-      "env", {
-      "targets": {
-        "browsers": [
-          "last 2 versions",
-          "IE >= 10"
-        ]
+      "env",
+      {
+        "targets": {
+          "browsers": [
+            "last 2 versions",
+            "IE >= 10"
+          ]
+        }
       }
-    }
     ]
   ]
 }
