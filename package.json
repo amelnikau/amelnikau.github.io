@@ -4,7 +4,7 @@
   "description": "frontcamp-3",
   "main": "index.js",
   "scripts": {
-    "babel": "babel --presets es2015 libs/app.js -o build/app.bundle.js",
+    "babel": "babel libs/app.js -o build/app.bundle.js",
     "start": "http-server"
   },
   "repository": {

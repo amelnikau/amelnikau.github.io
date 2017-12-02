@@ -10,12 +10,14 @@ class Fetcher {
         console.log(this);
     }
 
-    executeFetch() {
-        fetch(new Request(this.url))
-            .then((response) => {
-                response.json().then(this.fulfillClosure);
-            })
-            .catch(this.rejectClosure);
+    async executeFetch() {
+        try {
+            let response = await fetch(new Request(this.url));
+            let jsonResponse = await response.json();
+            this.fulfillClosure(jsonResponse);
+        } catch (e) {
+            this.rejectClosure(e);
+        }
     }
 }
 
