@@ -1,34 +1,7 @@
-const NEWS_API_KEY = 'a3542e73015b4afcb6e9f34ae4c89598';
-const CHANNELS_URL = `https://newsapi.org/v2/sources?language=en&country=us&category=general&apiKey=${NEWS_API_KEY}`;
-const NEWS_URL_WITHOUT_SOURCE = `https://newsapi.org/v2/top-headlines?apiKey=${NEWS_API_KEY}&sources=`;
+import Fetcher from '../util/fetcher';
+import {NEWS_URL_WITHOUT_SOURCE} from '../config/config';
 
-class Fetcher {
-    constructor(url, fulfillClosure, rejectClosure) {
-        this.url = url;
-        this.fulfillClosure = fulfillClosure;
-        this.rejectClosure = rejectClosure;
-        console.log(this);
-    }
-
-    async executeFetch() {
-        try {
-            let response = await fetch(new Request(this.url));
-            let jsonResponse = await response.json();
-            this.fulfillClosure(jsonResponse);
-        } catch (e) {
-            this.rejectClosure(e);
-        }
-    }
-}
-
-
-class DropdownMenuItem {
-    constructor(channelName, channelId) {
-        $("#dropdownMenu").append(`<a class="dropdown-item" id="${channelId}" href="#">${channelName}</a>`);
-    }
-}
-
-class DropdownMenu {
+export default class DropdownMenu {
     addOnClickHandler() {
         $(".dropdown-menu a").click(function () {
                 let channelId = $(this).attr('id');
@@ -58,12 +31,3 @@ class DropdownMenu {
         );
     }
 }
-
-new Fetcher(CHANNELS_URL, (json) => {
-    let {sources = []} = json;
-    console.log(sources);
-    for (let channel of sources) {
-        new DropdownMenuItem(channel.name, channel.id);
-    }
-    new DropdownMenu().addOnClickHandler();
-}, (error) => $('#alert').show()).executeFetch();
