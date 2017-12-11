@@ -14,6 +14,9 @@ module.exports = {
         filename: '[name].bundle.js',
         path: path.resolve(__dirname, 'dist')
     },
+    resolveLoader: {
+        modules: ['node_modules', path.resolve(__dirname, 'loaders')]
+    },
     module: {
         rules: [
             {
@@ -26,7 +29,11 @@ module.exports = {
                 use: {
                     loader: 'babel-loader'
                 }
-            }
+            },
+            {
+                test: /\.json$/,
+                use: [ 'json-loader', 'remove-number-attributes-loader' ]
+            },
         ]
     },
     plugins: [

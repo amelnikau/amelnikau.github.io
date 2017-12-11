@@ -5,6 +5,7 @@ import Fetcher from './util/fetcher';
 import DropdownMenuItem from './component/DropdownMenuItem';
 import DropdownMenu from './component/DropdownMenu';
 import {CHANNELS_URL} from './config/config';
+import test_json from './test/json_with_number_attributes.json';
 
 
 new Fetcher(CHANNELS_URL, (json) => {
