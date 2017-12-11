@@ -1,13 +1,13 @@
-import Fetcher from '../util/fetcher';
-import {NEWS_URL_WITHOUT_SOURCE} from '../config/config';
-
 export default class DropdownMenu {
     addOnClickHandler() {
-        $(".dropdown-menu a").click(function () {
+        $(".dropdown-menu a").click(async function () {
+                let Fetcher = (await import(/* webpackChunkName: "fetcher" */ '../util/fetcher')).default;
+                let configModule = await import(/* webpackChunkName: "config" */ '../config/config');
+
                 let channelId = $(this).attr('id');
                 let channelName = $(this).text();
                 $("#dropdownMenuButton").html(`${channelName} <span class="caret"></span>`);
-                new Fetcher(NEWS_URL_WITHOUT_SOURCE + channelId, (json) => {
+                new Fetcher(configModule.NEWS_URL_WITHOUT_SOURCE + channelId, (json) => {
                     let {articles = []} = json;
                     $(".featurette").remove();
                     $(".featurette-divider").remove();

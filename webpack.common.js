@@ -1,5 +1,7 @@
 const path = require('path');
-var webpack = require('webpack');
+let webpack = require('webpack');
+let HtmlWebpackPlugin = require('html-webpack-plugin');
+let MD5HashPlugin = require('md5-hash-webpack-plugin');
 
 module.exports = {
     entry: {
@@ -7,12 +9,14 @@ module.exports = {
         vendor: [
             'babel-polyfill',
             'whatwg-fetch',
-            'bootstrap',
+            'bootstrap'
         ]
     },
     output: {
         filename: '[name].bundle.js',
-        path: path.resolve(__dirname, 'dist')
+        chunkFilename: "[chunkhash].[id].chunk.js",
+        path: path.resolve(__dirname, 'dist'),
+        publicPath: '/'
     },
     resolveLoader: {
         modules: ['node_modules', path.resolve(__dirname, 'loaders')]
@@ -37,6 +41,7 @@ module.exports = {
         ]
     },
     plugins: [
+        new MD5HashPlugin(),
         new webpack.ProvidePlugin({
             $: 'jquery',
             jQuery: 'jquery',
@@ -44,7 +49,13 @@ module.exports = {
             Popper: ['popper.js', 'default'],
         }),
         new webpack.optimize.CommonsChunkPlugin({
-            names: ['vendor', 'manifest']
+            names: ['vendor', 'manifest'],
+            minChunks: 1
+        }),
+        new HtmlWebpackPlugin({
+            filename: '../index.html',
+            template: 'src/index_template.html',
+            chunksSortMode: 'dependency'
         })
     ]
 };

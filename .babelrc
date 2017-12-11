@@ -1,5 +1,5 @@
 {
-  "plugins": ["./plugins/remove-console-log-plugin.js"],
+  "plugins": ["./plugins/remove-console-log-plugin.js", "dynamic-import-webpack"],
   "presets": [
     [
       "env",

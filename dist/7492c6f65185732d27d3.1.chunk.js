@@ -1,0 +1,22 @@
+webpackJsonp([1],{
+
+/***/ 337:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var NEWS_API_KEY = 'a3542e73015b4afcb6e9f34ae4c89598';
+var CHANNELS_URL = 'https://newsapi.org/v2/sources?language=en&country=us&category=general&apiKey=' + NEWS_API_KEY;
+var NEWS_URL_WITHOUT_SOURCE = 'https://newsapi.org/v2/top-headlines?apiKey=' + NEWS_API_KEY + '&sources=';
+
+exports.CHANNELS_URL = CHANNELS_URL;
+exports.NEWS_URL_WITHOUT_SOURCE = NEWS_URL_WITHOUT_SOURCE;
+
+/***/ })
+
+});
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9zcmMvY29uZmlnL2NvbmZpZy5qcyJdLCJuYW1lcyI6WyJORVdTX0FQSV9LRVkiLCJDSEFOTkVMU19VUkwiLCJORVdTX1VSTF9XSVRIT1VUX1NPVVJDRSJdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7QUFBQSxJQUFNQSxlQUFlLGtDQUFyQjtBQUNBLElBQU1DLGtHQUFnR0QsWUFBdEc7QUFDQSxJQUFNRSwyRUFBeUVGLFlBQXpFLGNBQU47O1FBRVFDLFksR0FBQUEsWTtRQUFhQyx1QixHQUFBQSx1QiIsImZpbGUiOiI3NDkyYzZmNjUxODU3MzJkMjdkMy4xLmNodW5rLmpzIiwic291cmNlc0NvbnRlbnQiOlsiY29uc3QgTkVXU19BUElfS0VZID0gJ2EzNTQyZTczMDE1YjRhZmNiNmU5ZjM0YWU0Yzg5NTk4JztcbmNvbnN0IENIQU5ORUxTX1VSTCA9IGBodHRwczovL25ld3NhcGkub3JnL3YyL3NvdXJjZXM/bGFuZ3VhZ2U9ZW4mY291bnRyeT11cyZjYXRlZ29yeT1nZW5lcmFsJmFwaUtleT0ke05FV1NfQVBJX0tFWX1gO1xuY29uc3QgTkVXU19VUkxfV0lUSE9VVF9TT1VSQ0UgPSBgaHR0cHM6Ly9uZXdzYXBpLm9yZy92Mi90b3AtaGVhZGxpbmVzP2FwaUtleT0ke05FV1NfQVBJX0tFWX0mc291cmNlcz1gO1xuXG5leHBvcnQge0NIQU5ORUxTX1VSTCxORVdTX1VSTF9XSVRIT1VUX1NPVVJDRX07XG5cblxuLy8gV0VCUEFDSyBGT09URVIgLy9cbi8vIC4vc3JjL2NvbmZpZy9jb25maWcuanMiXSwic291cmNlUm9vdCI6IiJ9
