@@ -3,7 +3,6 @@ export default class Fetcher {
         this.url = url;
         this.fulfillClosure = fulfillClosure;
         this.rejectClosure = rejectClosure;
-        console.log(this);
     }
 
     async executeFetch() {
