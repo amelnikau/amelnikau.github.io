@@ -28,6 +28,10 @@ export default class DropdownMenu {
             $(".featurette").remove();
             $(".featurette-divider").remove();
             for (let article of articles) {
+                if (!article.title || !article.description || !article.urlToImage) {
+                    // skip news without title or description or image
+                    continue;
+                }
                 $("#dropdownSection")
                     .after(newsItemsFlightWeightsFactory
                         .get(article.title, article.description, article.urlToImage).render());
