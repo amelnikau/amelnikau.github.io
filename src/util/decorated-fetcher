@@ -1,0 +1,11 @@
+export default class DecoratedFetcher {
+    constructor(fetcher) {
+        this.fetcher = fetcher;
+    }
+
+    async executeFetchWithLogging() {
+        console.log(`Starting fetch ${Date.now()}`);
+        await this.fetcher.executeFetch();
+        console.log(`Completing fetch ${Date.now()}`);
+    }
+}

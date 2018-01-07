@@ -33,17 +33,18 @@ async function renderDropdown() {
         $("#buttonSection").hide();
 
         let Fetcher = (await import(/* webpackChunkName: "fetcher" */ './util/fetcher')).default;
+        let DecoratedFetcher = (await import(/* webpackChunkName: "fetcher" */ './util/decorated-fetcher')).default;
         let DropdownMenuItem = (await import(/* webpackChunkName: "DropdownMenuItem" */ './component/DropdownMenuItem')).default;
         let DropdownMenu = (await import(/* webpackChunkName: "DropdownMenu" */ './component/DropdownMenu')).default;
         let configModule = await import(/* webpackChunkName: "config" */ './config/config');
 
-        new Fetcher(configModule.CHANNELS_URL, async (json) => {
+        new DecoratedFetcher(new Fetcher(configModule.CHANNELS_URL, async (json) => {
             let {sources = []} = json;
             for (let channel of sources) {
                 new DropdownMenuItem(channel.name, channel.id);
             }
             new DropdownMenu(store).addOnClickHandler();
-        }, (error) => $('#alert').show()).executeFetch();
+        }, (error) => $('#alert').show())).executeFetchWithLogging();
 
         $("#dropdownSection").show();
     }
